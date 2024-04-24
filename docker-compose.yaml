@@ -13,19 +13,4 @@ services:
       - 3000:3000/tcp
     volumes:
       - ./provisioning:/etc/grafana/provisioning
-    extra_hosts:
-      - 'host.docker.internal:host-gateway'
-  loki:
-    image: grafana/loki:main-e9b6ce9
-    environment:
-      LOG_CLUSTER_DEPTH: '8'
-      LOG_SIM_TH: '0.3'
-    ports:
-      - '3100:3100'
-    volumes:
-      - ./config/loki-config.yaml:/etc/loki/local-config.yaml
-    command: -config.file=/etc/loki/local-config.yaml
-    restart: on-failure
-  generator:
-    image: svennergr/fake-logs-generator:main-c8d21cc
-    command: -url http://loki:3100/loki/api/v1/push
+      - ./dist:/var/lib/grafana/plugins/grafana-logsapp

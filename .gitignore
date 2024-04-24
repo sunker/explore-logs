@@ -35,3 +35,7 @@ e2e-results/
 
 # Ignore OSX indexing
 .DS_Store
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
